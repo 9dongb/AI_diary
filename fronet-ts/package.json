@@ -1,0 +1,24 @@
+{
+  "name": "fronet-ts",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "build:css": "postcss src/styles/tailwinding.css -o src/styles/main.css",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/twig": "^1.12.16",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0"
+  },
+  "dependencies": {
+    "@types/node": "^20.12.13",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "twig": "^1.17.1"
+  }
+}

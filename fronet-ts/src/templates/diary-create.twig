@@ -1,0 +1,30 @@
+<div class="min-h-screen bg-gradient-to-r from-brown-100 to-brown-200 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md mx-auto bg-white rounded-4xl shadow-md overflow-hidden md:max-w-2xl">
+    <div class="p-8">
+      <h1 class="text-3xl font-bold mb-4 text-brown-900 mt-4">Create Diary Entry</h1>
+      <form action="#" method="POST" class="space-y-6 m-4 p-2">
+        <div class="mb-4">
+          <label for="title" class="block text-sm font-medium text-brown-700">Title</label>
+          <input type="text" name="title" id="title"
+                 class="mt-1 focus:ring-brown-500 focus:border-brown-500 block w-full shadow-sm sm:text-sm border-brown-300 rounded-full">
+        </div>
+        <div class="mb-4">
+          <label for="date" class="block text-sm font-medium text-brown-700">Date</label>
+          <input type="date" name="date" id="date"
+                 class="mt-1 focus:ring-brown-500 focus:border-brown-500 block w-full shadow-sm sm:text-sm border-brown-300 rounded-full">
+        </div>
+        <div class="mb-4">
+          <label for="content" class="block text-sm font-medium text-brown-700">Content</label>
+          <textarea name="content" id="content" rows="5"
+                    class="mt-1 focus:ring-brown-500 focus:border-brown-500 block w-full shadow-sm sm:text-sm border-brown-300 rounded-2xl"></textarea>
+        </div>
+        <div class="flex justify-end">
+          <button type="submit"
+                  class="inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-full text-white bg-brown-600 hover:bg-brown-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brown-500">
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
