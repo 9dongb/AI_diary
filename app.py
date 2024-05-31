@@ -9,6 +9,8 @@ app.secret_key = "Um_AI_Diary_Hungry_BBC_BBQ_Chicken"
 # empty_id = '9dongb'
 # empty_pw = '1234'
 
+hi = '안녕'
+
 
 diary_data = [
     {
