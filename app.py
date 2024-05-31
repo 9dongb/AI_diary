@@ -9,6 +9,8 @@ app.secret_key = 'Um_AI_Diary_Hungry_BBC_BBQ_Chicken'
 # empty_id = '9dongb'
 # empty_pw = '1234'
 
+hi = '안녕'
+
 
 diary_data = [{ 'id': 1, 'title': '배고픈하루 1', 'content': 'This is the content of diary 1.dddddddddddddddddddddddddddddddddddd', 
            'createdAt': '2022-01-01', 'updatedAt': '2022-01-02'},
