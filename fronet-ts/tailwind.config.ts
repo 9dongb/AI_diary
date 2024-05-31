@@ -1,8 +1,7 @@
 import type {Config} from 'tailwindcss'
 
 export default {
-  content: [],
-  purge: ['./src/**/*.html', './src/**/*.ts', "./src/**/*.twig"],
+  content: ['./src/**/*.html', './src/**/*.ts', "./src/**/*.twig"],
   theme: {
     extend: {
       colors: {
