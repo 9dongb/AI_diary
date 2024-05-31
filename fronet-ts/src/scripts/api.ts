@@ -1,11 +1,11 @@
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = 'http://localhost:5000';
 
 export async function fetchDiaries() {
     const response = await fetch(`${API_BASE_URL}/diaries`);
     return response.json();
 }
 
-export async function fetchDiary(id: string) {
+export async function fetchDiary(id: number) {
     const response = await fetch(`${API_BASE_URL}/diaries/${id}`);
     return response.json();
 }

@@ -1,6 +1,6 @@
-// import { fetchDiaries, fetchDiary, createDiary, login, register } from './api';
+import { fetchDiaries, fetchDiary, createDiary, login, register } from './api';
 import {renderTemplate} from './utils';
-import {fetchDiaries, fetchDiary} from "../mockApi.ts";
+// import {fetchDiaries, fetchDiary} from "../mockApi.ts";
 
 const routes: { [key: string]: () => void } = {
   '/': () => renderTemplate('index.twig', {}, document.getElementById('app')!),
@@ -49,24 +49,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // Add event listeners for forms and buttons
-//   document.addEventListener('submit', async (event) => {
-//     const target = event.target as HTMLFormElement;
-//     if (target.id === 'login-form') {
-//       event.preventDefault();
-//       const email = (document.getElementById('email') as HTMLInputElement).value;
-//       const password = (document.getElementById('password') as HTMLInputElement).value;
-//       await login(email, password);
-//     } else if (target.id === 'register-form') {
-//       event.preventDefault();
-//       const email = (document.getElementById('email') as HTMLInputElement).value;
-//       const password = (document.getElementById('password') as HTMLInputElement).value;
-//       await register(email, password);
-//     } else if (target.id === 'diary-create-form') {
-//       event.preventDefault();
-//       const title = (document.getElementById('title') as HTMLInputElement).value;
-//       const date = (document.getElementById('date') as HTMLInputElement).value;
-//       const content = (document.getElementById('content') as HTMLTextAreaElement).value;
-//       await createDiary({title, date, content});
-//     }
-//   });
+  document.addEventListener('submit', async (event) => {
+    const target = event.target as HTMLFormElement;
+    if (target.id === 'login-form') {
+      event.preventDefault();
+      const email = (document.getElementById('userId') as HTMLInputElement).value;
+      const password = (document.getElementById('password') as HTMLInputElement).value;
+      await login(email, password);
+    } else if (target.id === 'register-form') {
+      event.preventDefault();
+      const email = (document.getElementById('email') as HTMLInputElement).value;
+      const password = (document.getElementById('password') as HTMLInputElement).value;
+      await register(email, password);
+    } else if (target.id === 'diary-create-form') {
+      event.preventDefault();
+      const title = (document.getElementById('title') as HTMLInputElement).value;
+      const date = (document.getElementById('date') as HTMLInputElement).value;
+      const content = (document.getElementById('content') as HTMLTextAreaElement).value;
+      await createDiary({title, date, content});
+    }
+  });
 });
