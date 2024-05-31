@@ -32,11 +32,6 @@ diary_data = [
 # yahoo wahoo jahoo wahoo
 
 
-@app.route("/")
-def index():
-    return "hi"
-
-
 @app.route("/login", methods=["GET", "POST"])
 def login():
     data = request.json
