@@ -9,8 +9,6 @@ app.secret_key = "Um_AI_Diary_Hungry_BBC_BBQ_Chicken"
 # empty_id = '9dongb'
 # empty_pw = '1234'
 
-hi = '안녕'
-
 
 diary_data = [
     {
@@ -30,6 +28,11 @@ diary_data = [
 ]
 
 # yahoo wahoo jahoo wahoo
+
+
+@app.route("/")
+def index():
+    return "lkcjf;lasjdf;laksjdf;lasjdf;lkjas"
 
 
 @app.route("/login", methods=["GET", "POST"])
