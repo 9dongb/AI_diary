@@ -4,25 +4,58 @@
       계정 생성
     </h2>
     <form class="mt-8 space-y-6" action="#" method="POST">
-      <div class="rounded-md shadow-sm -space-y-px">
+      <div class="rounded-md shadow-sm">
         <div>
           <label for="userId" class="sr-only">id</label>
-          <input id="userId" name="userId" type="id" autocomplete="id" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-brown-300 placeholder-brown-500 text-brown-900 rounded-t-md focus:outline-none focus:ring-brown-500 focus:border-brown-500 focus:z-10 sm:text-sm" placeholder="ID">
+          <input id="userId" name="userId" type="text" autocomplete="id" required
+                 class="appearance-none rounded-none relative block w-full px-3 py-2 border border-brown-300 placeholder-brown-500 text-brown-900 rounded-t-md focus:outline-none focus:ring-brown-500 focus:border-brown-500 focus:z-10 sm:text-sm"
+                 placeholder="ID">
         </div>
         <div>
           <label for="password" class="sr-only">Password</label>
-          <input id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-brown-300 placeholder-brown-500 text-brown-900 rounded-b-md focus:outline-none focus:ring-brown-500 focus:border-brown-500 focus:z-10 sm:text-sm" placeholder="PASSWORD">
+          <input id="password" name="password" type="password" autocomplete="current-password" required
+                 class="appearance-none rounded-none relative block w-full px-3 py-2 border border-brown-300 placeholder-brown-500 text-brown-900 rounded-b-md focus:outline-none focus:ring-brown-500 focus:border-brown-500 focus:z-10 sm:text-sm"
+                 placeholder="PASSWORD">
         </div>
-      </div>
-      <div>
-        <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-4xl text-white bg-brown-600 hover:bg-brown-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brown-500">
+        <div>
+          <label for="password-confirm" class="sr-only">Confirm Password</label>
+          <input id="password-confirm" name="password-confirm" type="password" autocomplete="current-password" required
+                 class="appearance-none rounded-none relative block w-full px-3 py-2 border border-brown-300 placeholder-brown-500 text-brown-900 rounded-b-md focus:outline-none focus:ring-brown-500 focus:border-brown-500 focus:z-10 sm:text-sm"
+                 placeholder="CONFIRM PASSWORD">
+        </div>
+        <div class="mt-4 mb-2">
+          <label for="name" class="sr-only">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required
+                 class="appearance-none relative block w-full px-3 py-2 border border-brown-300 placeholder-brown-500 text-brown-900 rounded-md focus:outline-none focus:ring-brown-500 focus:border-brown-500 focus:z-10 sm:text-sm"
+                 placeholder="Name">
+        </div>
+        <div class="mt-4 mb-2">
+          <label for="age" class="sr-only">Age</label>
+          <input id="age" name="age" type="number" autocomplete="age" required
+                 class="appearance-none relative block w-full px-3 py-2 border border-brown-300 placeholder-brown-500 text-brown-900 rounded-md focus:outline-none focus:ring-brown-500 focus:border-brown-500 focus:z-10 sm:text-sm"
+                 placeholder="Age">
+        </div>
+        <div class="mt-4 mb-2">
+          <label for="address" class="sr-only">Address</label>
+          <input id="address" name="address" type="text" autocomplete="address" required
+                 class="appearance-none relative block w-full px-3 py-2 border border-brown-300 placeholder-brown-500 text-brown-900 rounded-md focus:outline-none focus:ring-brown-500 focus:border-brown-500 focus:z-10 sm:text-sm"
+                 placeholder="Address">
+        </div>
+        <div class="flex items-center space-x-4 justify-center mt-4 mb-2">
+          <div class="flex items-center space-x-2">
+            <input type="radio" id="male" name="gender" value="male" class="form-radio h-5 w-5 text-brown-600">
+            <label for="male" class="text-brown-900">Male</label>
+          </div>
+          <div class="flex items-center space-x-2">
+            <input type="radio" id="female" name="gender" value="female" class="form-radio h-5 w-5 text-brown-600">
+            <label for="female" class="text-brown-900">Female</label>
+          </div>
+        </div>
+        <button type="submit"
+                class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-4xl text-white bg-brown-600 hover:bg-brown-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brown-500">
           회원가입
         </button>
       </div>
     </form>
   </div>
 </div>
-
-<script>
-
-</script>

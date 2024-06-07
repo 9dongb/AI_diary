@@ -9,10 +9,6 @@ app.secret_key = "Um_AI_Diary_Hungry_BBC_BBQ_Chicken"
 # empty_id = '9dongb'
 # empty_pw = '1234'
 
-# hohoho merry chrostmas!!
-
-# hohoho from main branch!!
-
 diary_data = [
     {
         "id": 1,
@@ -23,8 +19,8 @@ diary_data = [
     },
     {
         "id": 2,
-        "title": "Diary 2",
-        "content": "This is the content of diary 2.",
+        "title": "Diary 33",
+        "content": "This is the content of diary2737 2.",
         "createdAt": "2022-01-01",
         "updatedAt": "2022-01-02",
     },
@@ -35,7 +31,7 @@ diary_data = [
 
 @app.route("/")
 def index():
-    return "lkcjf;lasjdf;laksjdf;lasjdf;lkjas"
+    return "lkcjflkjas"
 
 
 @app.route("/login", methods=["GET", "POST"])
