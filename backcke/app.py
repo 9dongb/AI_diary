@@ -9,10 +9,6 @@ app.secret_key = "Um_AI_Diary_Hungry_BBC_BBQ_Chicken"
 # empty_id = '9dongb'
 # empty_pw = '1234'
 
-# hohoho merry chrostmas!!
-
-# hohoho from main branch!!!
-
 diary_data = [
     {
         "id": 1,
