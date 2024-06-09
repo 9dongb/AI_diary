@@ -1,8 +1,46 @@
-// import {fetchDiaries, fetchDiary, createDiary, login, register, isLoggedIn} from './api';
+import {fetchDiaries, fetchDiary, createDiary, login, register, isLoggedIn} from './api';
 import {renderTemplate} from './utils';
-import {fetchDiaries, fetchDiary} from "../mockApi.ts";
+// import {fetchDiaries, fetchDiary} from "../mockApi.ts";
 import {generateGraph} from "./d3-girrafe";
 
+// TODO: erase this function after implementing the actual data fetching
+const generateDummyData = (numPoints: number) => {
+  const data = [];
+  const startDate = new Date(); // Start from today
+
+  for (let i = 0; i < numPoints; i++) {
+    // Subtract i days from the start date
+    const date = new Date(startDate.getTime() - i * 24 * 60 * 60 * 1000);
+
+    // Generate a random value between 1 and 10
+    const value = Math.floor(Math.random() * 10) + 1;
+
+    data.push({ date, value });
+  }
+
+  return data;
+};
+/*
+[
+  { date: new Date('2021-09-01'), value: [3,6,8,9] },
+    { date: new Date('2021-09-02'), value: 5 },
+    { date: new Date('2021-09-03'), value: 7 },
+    { date: new Date('2021-09-04'), value: 2 },
+    { date: new Date('2021-09-05'), value: 8 },
+    { date: new Date('2021-09-06'), value: 4 },
+    { date: new Date('2021-09-07'), value: 6 },
+    { date: new Date('2021-09-08'), value: 9 },
+    { date: new Date('2021-09-09'), value: 1 },
+    { date: new Date('2021-09-10'), value: 10 },
+]
+
+pie chart 도 고려.
+ */
+
+// Generate 30 data points
+const data = generateDummyData(30);
+
+// routers
 const routes: { [key: string]: () => void } = {
   '/': () => renderTemplate('index.twig', {}, document.getElementById('app')!),
   '/login': () => renderTemplate('login.twig', {}, document.getElementById('app')!),
@@ -33,6 +71,7 @@ function router() {
     renderTemplate('index.twig', {}, document.getElementById('app')!);
   }
 }
+
 function updateFloatingActionButtonVisibility() {
   const fab = document.querySelector('.fixed.bottom-5.right-5') as HTMLElement;
   if (fab) {
@@ -43,6 +82,7 @@ function updateFloatingActionButtonVisibility() {
     }
   }
 }
+
 function attachSidebarEventListeners() {
   document.querySelectorAll('.sidebar-item').forEach(item => {
     item.addEventListener('click', async event => {
@@ -61,14 +101,19 @@ function attachSidebarEventListeners() {
       if (contentDiv) {
         switch (target.id) {
           case 'profile-info':
-            await renderTemplate('profile-info.twig', {}, contentDiv);
+            await renderTemplate('profile-info.twig', {
+                name: '홍길동',
+                email: 'maweh@yeet.com'
+            }, contentDiv);
             break;
           case 'weekly-summary':
-            await renderTemplate('weekly-summary.twig', {}, contentDiv);
+            await renderTemplate('weekly-summary.twig', {
+                summary: '이번 주에는 기분이 좋았어요.'
+            }, contentDiv);
             break;
           case 'emotion-trends':
             await renderTemplate('emotion-trends.twig', {}, contentDiv);
-            generateGraph('graph', [10, 20, 30, 40, 50]);
+            generateGraph('graph', data);
             break;
           case 'depression-sos':
             await renderTemplate('depression-sos.twig', {}, contentDiv);
@@ -123,7 +168,12 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
       }
 
-      await register(email, password);
+      const response = await register(email, password);
+      if (response.success) {
+          alert('회원가입이 완료되었습니다.');
+          window.location.hash = '/#';
+      }
+
     } else if (target.id === 'diary-create-form') {
       event.preventDefault();
       const title = (document.getElementById('title') as HTMLInputElement).value;
@@ -136,12 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /*
-로그인 회원가입
-
-이름
-나이
-주소
-성별
 
 일기 작성 버튼 로그인 비활성화
 

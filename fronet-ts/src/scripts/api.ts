@@ -44,9 +44,9 @@ export async function register(email: string, password: string) {
 }
 
 export function logout() {
-    localStorage.removeItem('token'); // cookie에 저장된 토큰을 지움
+    localStorage.removeItem('session'); // cookie에 저장된 토큰을 지움
 }
 
 export function isLoggedIn(){
-    return !!localStorage.getItem('token');
+    return !!localStorage.getItem('session');
 }
