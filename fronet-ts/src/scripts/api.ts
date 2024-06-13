@@ -21,32 +21,51 @@ export async function createDiary(diary: { title: string, date: string, content:
     return response.json();
 }
 
-export async function login(email: string, password: string) {
+export async function login(userId: string, password: string) {
     const response = await fetch(`${API_BASE_URL}/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'http://localhost:5000',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ userId, password }),
+        credentials: 'include',
     });
     return response.json();
 }
 
-export async function register(email: string, password: string) {
+export async function register(userId: string, password: string, name: string, age: number, gender: string, address: string) {
     const response = await fetch(`${API_BASE_URL}/register`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'http://localhost:5000',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ userId, password, name, age, gender, address }),
     });
     return response.json();
 }
 
-export function logout() {
-    localStorage.removeItem('session'); // cookie에 저장된 토큰을 지움
+export async function logout() {
+    const response = await fetch(`${API_BASE_URL}/logout`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'http://localhost:5000',
+        },
+        credentials: 'include',
+    });
+    return response.json();
 }
 
-export function isLoggedIn(){
-    return !!localStorage.getItem('session');
+export async function checkLogin() {
+    const response = await fetch(`${API_BASE_URL}/login`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'http://localhost:5000',
+        },
+        credentials: 'include',
+    });
+    return response.json();
 }

@@ -1,4 +1,4 @@
-import {fetchDiaries, fetchDiary, createDiary, login, register, isLoggedIn} from './api';
+import {fetchDiaries, fetchDiary, createDiary, login, register, checkLogin, logout} from './api';
 import {renderTemplate} from './utils';
 // import {fetchDiaries, fetchDiary} from "../mockApi.ts";
 import {generateGraph} from "./d3-girrafe";
@@ -44,6 +44,16 @@ const data = generateDummyData(30);
 const routes: { [key: string]: () => void } = {
   '/': () => renderTemplate('index.twig', {}, document.getElementById('app')!),
   '/login': () => renderTemplate('login.twig', {}, document.getElementById('app')!),
+  '/logout': async () => {
+    const response = await logout();
+    if (response.success) {
+      alert('로그아웃 성공');
+      window.location.hash = '/';
+      handleLoginCheck();
+    } else {
+      alert('로그아웃 실패');
+    }
+  },
   '/register': () => renderTemplate('register.twig', {}, document.getElementById('app')!),
   '/diary-list': async () => {
     const diaries = await fetchDiaries();
@@ -72,16 +82,15 @@ function router() {
   }
 }
 
-function updateFloatingActionButtonVisibility() {
-  const fab = document.querySelector('.fixed.bottom-5.right-5') as HTMLElement;
-  if (fab) {
-    if (isLoggedIn()) {
-      fab.style.display = 'block';
-    } else {
-      fab.style.display = 'none';
-    }
-  }
-}
+// function updateFloatingActionButtonVisibility() {
+//   if (fab) {
+//     if (window.location.hash === '#/diary-list') {
+//       fab.style.display = 'block';
+//     } else {
+//       fab.style.display = 'none';
+//     }
+//   }
+// }
 
 function attachSidebarEventListeners() {
   document.querySelectorAll('.sidebar-item').forEach(item => {
@@ -124,6 +133,41 @@ function attachSidebarEventListeners() {
   });
 }
 
+function handleLoginCheck() {
+  checkLogin().then(response => {
+    const user = document.getElementById('user-name') as HTMLElement;
+    const loginButton = document.getElementById('login-button') as HTMLElement;
+    const logoutButton = document.getElementById('logout-button') as HTMLElement;
+    const registerButton = document.getElementById('register-button') as HTMLElement;
+
+    const myPageButton = document.getElementById('my-page-button') as HTMLElement;
+    const diaryListButton = document.getElementById('diary-list-button') as HTMLElement;
+
+    const fab = document.querySelector('.fixed.bottom-5.right-5') as HTMLElement;
+
+    if (response.success) {
+      if (user) {
+        user.innerText = response.userName;
+      }
+      loginButton?.classList.add('hidden');
+      logoutButton?.classList.remove('hidden');
+      registerButton?.classList.add('hidden');
+      myPageButton?.classList.remove('hidden');
+      diaryListButton?.classList.remove('hidden');
+      fab.style.display = 'block';
+    } else {
+      loginButton?.classList.remove('hidden');
+      logoutButton?.classList.add('hidden');
+      registerButton?.classList.remove('hidden');
+      myPageButton?.classList.add('hidden');
+      diaryListButton?.classList.add('hidden');
+      fab.style.display = 'none';
+    }
+  }).catch(error => {
+    console.error('Error checking login:', error);
+  });
+}
+
 window.addEventListener('hashchange', router);
 window.addEventListener('load', router);
 
@@ -139,23 +183,37 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initial route call
   router();
 
-  // Update floating action button visibility
-  updateFloatingActionButtonVisibility();
+  // check login status
+  handleLoginCheck();
+
+  // Update floating action button visibility based on the current route
+  // updateFloatingActionButtonVisibility();
 
   // Add event listeners for forms and buttons
   document.addEventListener('submit', async (event) => {
     const target = event.target as HTMLFormElement;
     if (target.id === 'login-form') {
       event.preventDefault();
-      const email = (document.getElementById('userId') as HTMLInputElement).value;
+      const userId = (document.getElementById('userId') as HTMLInputElement).value;
       const password = (document.getElementById('password') as HTMLInputElement).value;
-      await login(email, password);
+      const response = await login(userId, password);
+      if (response.success) {
+          alert('로그인 성공');
+          window.location.hash = '/diary-list';
+          handleLoginCheck();
+      } else {
+          alert('로그인 실패, 다시 시도해주세요.');
+      }
     } else if (target.id === 'register-form') {
       event.preventDefault();
-      const email = (document.getElementById('email') as HTMLInputElement).value;
+      const userId = (document.getElementById('userId') as HTMLInputElement).value;
       const password = (document.getElementById('password') as HTMLInputElement).value;
       const passwordConfirm = (document.getElementById('password-confirm') as HTMLInputElement).value;
-
+      const name = (document.getElementById('name') as HTMLInputElement).value;
+      const age = +(document.getElementById('age') as HTMLInputElement).value;
+      const address = (document.getElementById('address') as HTMLInputElement).value;
+      const selectedGender = (document.querySelector('input[name="gender"]:checked') as HTMLInputElement).value
+      console.log(selectedGender);
       if (password !== passwordConfirm) {
           alert('비밀번호가 일치하지 않습니다.');
           return;
@@ -168,10 +226,12 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
       }
 
-      const response = await register(email, password);
+      const response = await register(userId, password, name, age, selectedGender, address);
       if (response.success) {
-          alert('회원가입이 완료되었습니다.');
-          window.location.hash = '/#';
+          alert('회원가입 성공');
+          window.location.hash = '/login';
+      } else {
+          alert('회원가입 실패');
       }
 
     } else if (target.id === 'diary-create-form') {
