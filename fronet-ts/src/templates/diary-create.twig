@@ -2,17 +2,17 @@
   <div class="max-w-md mx-auto bg-white rounded-4xl shadow-md overflow-hidden md:max-w-2xl">
     <div class="p-8">
       <h1 class="text-3xl font-bold mb-4 text-brown-900 mt-4">일기 작성</h1>
-      <form action="#" method="POST" class="space-y-6 m-4 p-2">
+      <form id="diary-create-form" method="POST" class="space-y-6 m-4 p-2">
         <div class="mb-4">
           <label for="title" class="block text-sm font-medium text-brown-700">제목</label>
           <input type="text" name="title" id="title"
                  class="mt-1 focus:ring-brown-500 focus:border-brown-500 block w-full shadow-sm sm:text-sm border-brown-300 rounded-full">
         </div>
-        <div class="mb-4">
-          <label for="date" class="block text-sm font-medium text-brown-700">날짜</label>
-          <input type="date" name="date" id="date"
-                 class="mt-1 focus:ring-brown-500 focus:border-brown-500 block w-full shadow-sm sm:text-sm border-brown-300 rounded-full">
-        </div>
+{#        <div class="mb-4">#}
+{#          <label for="date" class="block text-sm font-medium text-brown-700">날짜</label>#}
+{#          <input type="date" name="date" id="date"#}
+{#                 class="mt-1 focus:ring-brown-500 focus:border-brown-500 block w-full shadow-sm sm:text-sm border-brown-300 rounded-full">#}
+{#        </div>#}
         <div class="mb-4">
           <label for="content" class="block text-sm font-medium text-brown-700">내용</label>
           <textarea name="content" id="content" rows="5"

@@ -1,4 +1,4 @@
-import {fetchDiaries, fetchDiary, createDiary, login, register, checkLogin, logout} from './api';
+import {fetchDiaries, fetchDiary, createDiary, login, register, checkLogin, logout, userInfo} from './api';
 import {renderTemplate} from './utils';
 // import {fetchDiaries, fetchDiary} from "../mockApi.ts";
 import {generateGraph} from "./d3-girrafe";
@@ -57,11 +57,13 @@ const routes: { [key: string]: () => void } = {
   '/register': () => renderTemplate('register.twig', {}, document.getElementById('app')!),
   '/diary-list': async () => {
     const diaries = await fetchDiaries();
+    console.log(diaries)
     renderTemplate('diary-list.twig', {diaries}, document.getElementById('app')!);
   },
   '/diary-create': () => renderTemplate('diary-create.twig', {}, document.getElementById('app')!),
   '/my-page': async () => {
-    await renderTemplate('my-page.twig', {}, document.getElementById('app')!)
+    const res = await userInfo();
+    await renderTemplate('my-page.twig', {user: res}, document.getElementById('app')!);
     attachSidebarEventListeners();
   },
   '/diary': async () => {
@@ -197,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const userId = (document.getElementById('userId') as HTMLInputElement).value;
       const password = (document.getElementById('password') as HTMLInputElement).value;
       const response = await login(userId, password);
-      if (response.success) {
+      if (response.success === 1) {
           alert('로그인 성공');
           window.location.hash = '/diary-list';
           handleLoginCheck();
@@ -237,9 +239,15 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (target.id === 'diary-create-form') {
       event.preventDefault();
       const title = (document.getElementById('title') as HTMLInputElement).value;
-      const date = (document.getElementById('date') as HTMLInputElement).value;
+      // const date = (document.getElementById('date') as HTMLInputElement).value; // disabled for now
       const content = (document.getElementById('content') as HTMLTextAreaElement).value;
-      await createDiary({title, date, content});
+      const response = await createDiary({title, content});
+        if (response.success) {
+            alert('일기 작성 성공');
+            window.location.hash = '/diary-list';
+        } else {
+            alert('일기 작성 실패');
+        }
     }
   });
 });
