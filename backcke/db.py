@@ -1,9 +1,11 @@
 import pymysql
 
-DATABASE_HOST = "localhost"
-DATABASE_PORT = 55005
-DATABASE_USER = "root"
-DATABASE_PASSWORD = "1927"
+DATABASE_HOST = "mysql.jonngwanma.de"
+DATABASE_PORT = 3306
+# DATABASE_USER = "root"
+# DATABASE_PASSWORD = "1927"
+DATABASE_USER = "aidash"
+DATABASE_PASSWORD = "bored"
 DATABASE_DB = "ai_servicedb"
 
 

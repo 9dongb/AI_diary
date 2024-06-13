@@ -2,7 +2,7 @@ const API_BASE_URL = 'http://localhost:5000';
 
 const HEADERS = {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': '*', // dont do this man
 };
 
 // export async function fetchPosts() {

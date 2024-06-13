@@ -62,8 +62,7 @@ const routes: { [key: string]: () => void } = {
   },
   '/diary-create': () => renderTemplate('diary-create.twig', {}, document.getElementById('app')!),
   '/my-page': async () => {
-    const res = await userInfo();
-    await renderTemplate('my-page.twig', {user: res}, document.getElementById('app')!);
+    await renderTemplate('my-page.twig', {}, document.getElementById('app')!);
     attachSidebarEventListeners();
   },
   '/diary': async () => {
@@ -95,7 +94,8 @@ function router() {
 // }
 
 function attachSidebarEventListeners() {
-  document.querySelectorAll('.sidebar-item').forEach(item => {
+  const items = document.querySelectorAll('.sidebar-item');
+  items.forEach(item => {
     item.addEventListener('click', async event => {
       const target = event.target as HTMLElement;
       const contentDiv = document.getElementById('content');
@@ -109,17 +109,17 @@ function attachSidebarEventListeners() {
       // Add classes to newly selected item
       target.classList.add('bg-white', 'shadow-md', 'rounded-4xl');
 
+      const usr = await userInfo();
+      const summary = '이번 주에는 기분이 좋았어요.';
+
       if (contentDiv) {
         switch (target.id) {
           case 'profile-info':
-            await renderTemplate('profile-info.twig', {
-                name: '홍길동',
-                email: 'maweh@yeet.com'
-            }, contentDiv);
+            await renderTemplate('profile-info.twig', {usr}, contentDiv);
             break;
           case 'weekly-summary':
             await renderTemplate('weekly-summary.twig', {
-                summary: '이번 주에는 기분이 좋았어요.'
+                summary
             }, contentDiv);
             break;
           case 'emotion-trends':
@@ -133,6 +133,9 @@ function attachSidebarEventListeners() {
       }
     });
   });
+  if (items.length > 0) {
+    (items[0] as HTMLElement).click();
+  }
 }
 
 function handleLoginCheck() {
@@ -255,19 +258,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /*
 
-일기 작성 버튼 로그인 비활성화
-
-로그임 되면 로그인 버튼이 로그아웃 버튼으로 바뀌게
-안녕하세요, ㅇㅇ님!
-
 제목과 감정만 보여줄까?
 요약한걸 보여주자!! 한줄 (일단 요약을 전제로 데이터 모킹)
-
-마이페이지 안에서 버튼() 누르면 동글동글한 게 옮겨가면서 누르게 되면 오른쪽에 조그만 창 하나에 정보가 나오도록
-
-
-일기 리스트에서 큰 흰색버튼 자체에도 클릭리스너 넣기 (일기 상세보기로 이동)
-
 
 데이터에 상담사가 있다고 가정하고
 신상 보여주는 화면
