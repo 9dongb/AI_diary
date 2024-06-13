@@ -4,11 +4,14 @@ version = "0.1.0"
 description = ""
 authors = ["Jonggwan Park <craftguy55@gmail.com>"]
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.10"
 flask = "^3.0.3"
 flask-cors = "^4.0.1"
+pymysql = "^1.1.1"
+cryptography = "^42.0.8"
 
 
 [build-system]

@@ -3,7 +3,7 @@
     <h2 class="mt-6 text-center text-3xl font-extrabold text-brown-900">
       계정 생성
     </h2>
-    <form class="mt-8 space-y-6" action="#" method="POST">
+    <form id="register-form" class="mt-8 space-y-6" method="POST">
       <div class="rounded-md shadow-sm">
         <div>
           <label for="userId" class="sr-only">id</label>
@@ -14,7 +14,7 @@
         <div>
           <label for="password" class="sr-only">Password</label>
           <input id="password" name="password" type="password" autocomplete="current-password" required
-                 class="appearance-none rounded-none relative block w-full px-3 py-2 border border-brown-300 placeholder-brown-500 text-brown-900 rounded-b-md focus:outline-none focus:ring-brown-500 focus:border-brown-500 focus:z-10 sm:text-sm"
+                 class="appearance-none rounded-none relative block w-full px-3 py-2 border border-brown-300 placeholder-brown-500 text-brown-900 focus:outline-none focus:ring-brown-500 focus:border-brown-500 focus:z-10 sm:text-sm"
                  placeholder="PASSWORD">
         </div>
         <div>
@@ -43,11 +43,11 @@
         </div>
         <div class="flex items-center space-x-4 justify-center mt-4 mb-2">
           <div class="flex items-center space-x-2">
-            <input type="radio" id="male" name="gender" value="male" class="form-radio h-5 w-5 text-brown-600">
+            <input type="radio" id="male" name="gender" value="m" class="form-radio h-5 w-5 text-brown-600">
             <label for="male" class="text-brown-900">Male</label>
           </div>
           <div class="flex items-center space-x-2">
-            <input type="radio" id="female" name="gender" value="female" class="form-radio h-5 w-5 text-brown-600">
+            <input type="radio" id="female" name="gender" value="f" class="form-radio h-5 w-5 text-brown-600">
             <label for="female" class="text-brown-900">Female</label>
           </div>
         </div>
