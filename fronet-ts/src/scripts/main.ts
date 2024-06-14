@@ -37,6 +37,15 @@ const generateDummyData = (numPoints: number) => {
 pie chart 도 고려.
  */
 
+const emotionToEmoji = {
+  'happy': '😀',
+  'sad': '😢',
+  'angry': '😠',
+  'surprised': '😮',
+  'neutral': '😐',
+  // add more emotions and their corresponding emojis as needed
+};
+
 // Generate 30 data points
 const data = generateDummyData(30);
 
@@ -68,7 +77,7 @@ const routes: { [key: string]: () => void } = {
   '/diary': async () => {
     const id = parseInt(window.location.hash.split('/')[2]);
     const diary = await fetchDiary(id);
-    renderTemplate('diary-detail.twig', {diary}, document.getElementById('app')!);
+    renderTemplate('diary-detail.twig', {diary, emoji: emotionToEmoji}, document.getElementById('app')!);
   },
   '/depression-sos': () => renderTemplate('depression-sos.twig', {}, document.getElementById('app')!),
 };

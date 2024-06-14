@@ -23,6 +23,7 @@ def execute_query(query):
         # Retry the query
         db.cursor.execute(query)
 
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
