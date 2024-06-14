@@ -10,6 +10,8 @@
           <p class="text-brown-500 mt-1 text-sm">{{ diary.diaryTime }}</p>
           <div class="mt-4 flex space-x-2">
             <!-- Display emotion icons here -->
+            <span class="text-2xl">{{ emoji[diary.diaryEmtion] }}</span>
+{#            <span class="text-xl">{{ diary.diaryEmtion }}</span>#}
           </div>
         </a>
       </li>
