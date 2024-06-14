@@ -27,7 +27,7 @@
 
 ![로그인](https://github.com/9dongb/AI_diary/assets/106071689/6999c77c-c1cf-4bb5-897b-0c6833c10db3)
 
-### 3-3. 일기목록 페이지
+### 3-3. 일기목록 페이지 (생성 요약문 제목, 대표 감정 표시)
 ![일기목록](https://github.com/9dongb/AI_diary/assets/106071689/538b57e5-9165-4175-b6bb-0b982b45595e)
 
 ### 3-4. 마이 페이지
