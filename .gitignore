@@ -1,3 +1,9 @@
+# README
+README.md
+backcke/model/
+backcke/module/kobart_summary/
+backcke/module/kobert_emotion_model/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -1,10 +1,29 @@
+import torch
+from transformers import PreTrainedTokenizerFast
+from transformers.models.bart import BartForConditionalGeneration
+####################################################################################
 from flask import Flask, request, session, jsonify, redirect
-from flask_cors import CORS, cross_origin  # Cross-Origin Resorce Sharing
-from db import Database
+from flask_cors import CORS, cross_origin  # Cross-Origin Resorce Sharing 
+                                           # 서로 다른 도메인 간에 리소스를 주고 받는 것을 허용해주거나 차단하는 설정
+from module.db import Database
 import pymysql
+import os
+import subprocess
+############# KoBART 모델 및 토크나이저 로드########################################################################
+subprocess.call(['python', 'get_model_binary.py', '--model_binary', '../model/last-v1.ckpt'])
+tokenizer = PreTrainedTokenizerFast.from_pretrained('gogamza/kobart-base-v1')
+model_binary_path = model_binary_path = os.getcwd()+'\\backcke\\module\\kobart_summary\\'   # 모델 바이너리 파일 경로
+model = BartForConditionalGeneration.from_pretrained(model_binary_path)
+from module.create_summary import abstractive_summarization
+##################################################################################################################
+from module.emotion import predict_emotion
+from transformers import BertTokenizer, BertForSequenceClassification
+# 모델 로드
+model_save_path = model_binary_path = os.getcwd()+'\\backcke\\module\\kobert_emotion_model\\'   # 모델 바이너리 파일 경로
+emotion_loaded_model = BertForSequenceClassification.from_pretrained(model_save_path)
+emotion_loaded_tokenizer = BertTokenizer.from_pretrained(model_save_path)
 
-# 서로 다른 도메인 간에 리소스를 주고 받는 것을 허용해주거나 차단하는 설정
-
+##################################################################################################################
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 app.secret_key = "Um_AI_Diary_Hungry_BBC_BBQ_Chicken"
@@ -125,10 +144,14 @@ def create_diary():
     #     f"INSERT INTO diaryInfo (userId, diaryTitle, diaryContent) VALUES "
     #     f"('{session['user_id']}', '{data['title']}', '{data['content']}')"
     # )
-
+    
+    
+    diary_summary = abstractive_summarization(data['content'], tokenizer, model)
+    diary_emotion = predict_emotion(data['content'], emotion_loaded_model, emotion_loaded_tokenizer)
+    diary_emotion = max(diary_emotion, key = diary_emotion.get)
     execute_query(
-        f"INSERT INTO diaryInfo (userId, diaryTitle, diaryContent) VALUES "
-        f"('{session['user_id']}', '{data['title']}', '{data['content']}')"
+        f"INSERT INTO diaryInfo (userId, diaryTitle, diaryContent, diarySummary, diaryEmotion) VALUES "
+        f"('{session['user_id']}', '{data['title']}', '{data['content']}', '{diary_summary}', '{diary_emotion}')"
     )
     db.conn.commit()
 

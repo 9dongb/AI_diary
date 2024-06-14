@@ -1,4 +1,5 @@
-import {fetchDiaries, fetchDiary, createDiary, login, register, checkLogin, logout, userInfo} from './api';
+// import {fetchDiaries, fetchDiary, createDiary, login, register, checkLogin, logout, userInfo} from './api';
+import {createDiary, login, register, checkLogin, logout, userInfo, fetchDiaries, fetchDiary} from './api';
 import {renderTemplate} from './utils';
 // import {fetchDiaries, fetchDiary} from "../mockApi.ts";
 import {generateGraph} from "./d3-girrafe";
@@ -36,6 +37,15 @@ const generateDummyData = (numPoints: number) => {
 
 pie chart 도 고려.
  */
+const emotionToEmoji = {
+  '기쁨': '😀',
+  '분노': '😠',
+  '상처': '😞',
+  '당황': '😮',
+  '불안': '😨',
+  '슬픔': '😢',
+  // add more emotions and their corresponding emojis as needed
+};
 
 // Generate 30 data points
 const data = generateDummyData(30);
@@ -58,7 +68,7 @@ const routes: { [key: string]: () => void } = {
   '/diary-list': async () => {
     const diaries = await fetchDiaries();
     console.log(diaries)
-    renderTemplate('diary-list.twig', {diaries}, document.getElementById('app')!);
+    renderTemplate('diary-list.twig', {diaries, emoji: emotionToEmoji}, document.getElementById('app')!);
   },
   '/diary-create': () => renderTemplate('diary-create.twig', {}, document.getElementById('app')!),
   '/my-page': async () => {
@@ -68,7 +78,7 @@ const routes: { [key: string]: () => void } = {
   '/diary': async () => {
     const id = parseInt(window.location.hash.split('/')[2]);
     const diary = await fetchDiary(id);
-    renderTemplate('diary-detail.twig', {diary}, document.getElementById('app')!);
+    renderTemplate('diary-detail.twig', {diary, emoji: emotionToEmoji}, document.getElementById('app')!);
   },
   '/depression-sos': () => renderTemplate('depression-sos.twig', {}, document.getElementById('app')!),
 };
