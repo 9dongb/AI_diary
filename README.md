@@ -7,7 +7,7 @@
 - **AI**: Pytorch, KoBert
 - **Front-End**: HTML, CSS, JavaScript
 - **Back-End**: Flask
-- **Database**: MySQL
+- **Database**: AWS RDS
 - **Server**: AWS EC2
 
 ### 👨‍💼 담당 작업(구동빈)
@@ -38,6 +38,8 @@
 </details>
 
 ## 1. 개요
+- 사용자의 일기 내용을 분석하여 내용을 요악하고, 감정을 파악하여 대표 감정을 부여하여 주 단위로 요약된 감정 변화와 주요 내용을 제공
+- 이를 통해 사용자는 자신의 감정 상태를 객관적으로 이해하고, 자기 성찰 및 정신 건강 관리 가능
 
 ## 2. 화면 구성
 ### 2-1. 메인 페이지
