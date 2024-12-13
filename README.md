@@ -54,6 +54,10 @@
 
 <img src="https://github.com/9dongb/AI_diary/assets/106071689/6999c77c-c1cf-4bb5-897b-0c6833c10db3" width="20%" height="20%"/>
 
+**■ 일기 작성 페이지**
+
+<img src="https://github.com/user-attachments/assets/c4475823-e7bb-4a9f-b44c-d18cc644beb4" width="20%" height="20%"/>
+
 **■ 일기목록 페이지** (생성 요약문 제목, 대표 감정 표시)
 
 <img src="https://github.com/9dongb/AI_diary/assets/106071689/538b57e5-9165-4175-b6bb-0b982b45595e" width="20%" height="20%"/>
