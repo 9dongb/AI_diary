@@ -42,22 +42,28 @@
 - 이를 통해 사용자는 자신의 감정 상태를 객관적으로 이해하고, 자기 성찰 및 정신 건강 관리 가능
 
 ## 2. 화면 구성
-### 2-1. 메인 페이지
+**■ 메인 페이지**
+
 <img src="https://github.com/9dongb/AI_diary/assets/106071689/04e4b9d3-e239-4637-80b0-15669d5cea0b" width="20%" height="20%"/>
 
-### 2-2. 회원가입 페이지
+**■ 회원가입 페이지**
+
 <img src="https://github.com/9dongb/AI_diary/assets/106071689/cd46380d-b13a-478e-b437-422203cf9e71" width="20%" height="20%"/>
 
-### 2-3. 로그인 페이지
+**■ 로그인 페이지**
+
 <img src="https://github.com/9dongb/AI_diary/assets/106071689/6999c77c-c1cf-4bb5-897b-0c6833c10db3" width="20%" height="20%"/>
 
-### 2-4. 일기목록 페이지 (생성 요약문 제목, 대표 감정 표시)
+**■ 일기목록 페이지** (생성 요약문 제목, 대표 감정 표시)
+
 <img src="https://github.com/9dongb/AI_diary/assets/106071689/538b57e5-9165-4175-b6bb-0b982b45595e" width="20%" height="20%"/>
 
-### 2-5. 마이 페이지
+**■ 마이 페이지**
+
 <img src="https://github.com/9dongb/AI_diary/assets/106071689/f8c00b30-b52d-46d2-8ba1-fe29351ad596" width="20%" height="20%"/>
 
-### 2-6. 마이 페이지 - 감정 트렌드 그래프
+**■ 마이 페이지** - 감정 트렌드 그래프
+
 <img src="https://github.com/9dongb/AI_diary/assets/106071689/b6f9b02e-dcd4-46e1-a3bf-d9339153ff03" width="20%" height="20%"/>
 
 
