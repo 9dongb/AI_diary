@@ -42,7 +42,7 @@
 - 이를 통해 사용자는 자신의 **감정 상태**를 객관적으로 **이해**하고, 자기 성찰 및 정신 건강 관리 가능
 
 ## 2. 화면 구성
-**■ 메인 페이지** &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; **■ 회원가입 페이지**  &emsp; &emsp; &emsp; &emsp; **■ 로그인 페이지**
+**■ 메인 페이지** &emsp; &emsp; &emsp; &emsp;  **■ 회원가입 페이지**  &emsp; &emsp;  **■ 로그인 페이지**
 
 <img src="https://github.com/9dongb/AI_diary/assets/106071689/04e4b9d3-e239-4637-80b0-15669d5cea0b" width="20%" height="20%"/>
 &emsp;
