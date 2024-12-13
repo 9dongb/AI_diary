@@ -65,7 +65,7 @@
 - **AI**로 **요약**된 일기 내용을 제목으로 표시
 - **AI**로 **분석한 감정**에 맞는 **이모지**를 하단에 표시
 
-**■ 마이 페이지**  &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; **■ 마이 페이지** - 감정 트렌드 그래프
+**■ 마이 페이지**  &emsp; &emsp; &emsp; &emsp; **■ 마이 페이지** - 감정 트렌드 그래프
 
 <img src="https://github.com/9dongb/AI_diary/assets/106071689/f8c00b30-b52d-46d2-8ba1-fe29351ad596" width="20%" height="20%"/>
 &emsp;
