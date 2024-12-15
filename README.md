@@ -38,35 +38,39 @@
 </details>
 
 ## 1. 개요
-- 사용자가 기록한 **하루의 일상**을 **AI**를 통해 분석하여 **내용을 요악**하고, **감정을 분석**하여 대표 감정을 부여, 주 단위로 요약된 감정 변화와 주요 내용을 제공
-- 이를 통해 사용자는 자신의 **감정 상태**를 객관적으로 **이해**하고, 자기 성찰 및 정신 건강 관리 가능
+- 사용자가 기록한 **하루의 일상**을 **AI**를 통해 분석하여 **내용을 요악**하고, **감정을 분석**하여 대표 감정을 부여, 주 단위로 요약된 감정 변화와 주요 내용을 제공합니다.
+- 이를 통해 사용자는 자신의 **감정 상태**를 객관적으로 **이해**하고, 자기 성찰 및 정신 건강 관리가 가능합니다.
 
 ## 2. 화면 구성
-**■ 메인 페이지** &emsp; &emsp; &emsp; &emsp;  **■ 회원가입 페이지**  &emsp; &emsp; &emsp;  **■ 로그인 페이지**
+**■ 메인 페이지**, **회원가입 페이지**, **로그인 페이지**
 
-<img src="https://github.com/9dongb/AI_diary/assets/106071689/04e4b9d3-e239-4637-80b0-15669d5cea0b" width="20%" height="20%"/>
+<img src="https://github.com/user-attachments/assets/02df7dd6-5475-4dab-92be-4e0c94f7da76" width="20%" height="20%"/>
 &emsp;
-<img src="https://github.com/9dongb/AI_diary/assets/106071689/cd46380d-b13a-478e-b437-422203cf9e71" width="20%" height="20%"/>
+<img src="https://github.com/user-attachments/assets/18279db8-8628-4e56-bef2-819495f1e608" width="20%" height="20%"/>
 &emsp;
-<img src="https://github.com/9dongb/AI_diary/assets/106071689/6999c77c-c1cf-4bb5-897b-0c6833c10db3" width="21%" height="21%"/>
+<img src="https://github.com/user-attachments/assets/26c080fd-22d3-4eb3-882a-d8104af3b469" width="20%" height="20%"/>
+
+- 로그인에 성공하면 일기 작성 플로팅 버튼이 활성화되는 기능 구현
+- 회원 가입 시 유효성 검사 후 데이터베이스에 정보를 등록하는 기능 구현
+- 로그인 시 데이터베이스의 정보 조회 후 로그인 기능 구현
 
 **■ 일기 작성 페이지**
 
-- 작성된 일기 내용을  **KoBert**를 파인튜닝한 **AI 모델**을 통해 **요약**
-- 작성된 일기 내용을  **KoBert**를 파인튜닝한 **AI 모델**을 통해 분석해 하루의 **대표 감정**을 부여
+<img src="https://github.com/user-attachments/assets/95dec9c9-8792-4d6a-83aa-937f9fee0633" width="20%" height="20%"/>
 
-<img src="https://github.com/user-attachments/assets/c4475823-e7bb-4a9f-b44c-d18cc644beb4" width="20%" height="20%"/>
+- 작성된 일기 내용을  **KoBert**를 파인튜닝한 **AI 모델**을 통해 **요약** 기능 구현
+- 작성된 일기 내용을  **KoBert**를 파인튜닝한 **AI 모델**을 통해 분석해 하루의 **대표 감정**을 부여 가능 구현
 
 
 
 **■ 일기목록 페이지** (생성 요약문 제목, 대표 감정 표시)
-- **KoBert**를 파인튜닝한 **AI 모델**로 **요약**된 일기 내용을 제목으로 표시
-- **KoBert**를 파인튜닝한 **AI 모델**로 **분석한 감정**에 맞는 **이모지**를 하단에 표시
-<img src="https://github.com/9dongb/AI_diary/assets/106071689/538b57e5-9165-4175-b6bb-0b982b45595e" width="20%" height="20%"/>
 
+<img src="https://github.com/user-attachments/assets/5cab35dd-9395-4f3f-bd8e-2039f658ee1b" width="20%" height="20%"/>
 
+- **KoBert**를 파인튜닝한 **AI 모델**로 **요약**된 일기 내용을 제목으로 표시 기능 구현
+- **KoBert**를 파인튜닝한 **AI 모델**로 **분석한 감정**에 맞는 **이모지**를 하단에 표시 기능 구현
 
-**■ 마이 페이지**  &emsp; &emsp; &emsp; &emsp; **■ 마이 페이지** - 감정 트렌드 그래프
+**■ 마이 페이지**, **마이 페이지** - 감정 트렌드 그래프
 
 <img src="https://github.com/9dongb/AI_diary/assets/106071689/f8c00b30-b52d-46d2-8ba1-fe29351ad596" width="20%" height="20%"/>
 &emsp;
