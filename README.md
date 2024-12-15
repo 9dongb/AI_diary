@@ -5,8 +5,8 @@
 
 ### ⚙️ 기술스택
 - **AI**: Pytorch, KoBert
-- **Front-End**: HTML, CSS, JavaScript
-- **Back-End**: Flask
+- **Front-end**: HTML, CSS, JavaScript
+- **Back-end**: Flask
 - **Database**: AWS RDS
 - **Server**: AWS EC2
 
